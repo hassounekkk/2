@@ -9,6 +9,7 @@ public class YouWin : MonoBehaviour
     public GameObject win;
     public GameObject next;
     public GameObject restart;
+    public AudioSource rightt;
     bool right;
     // Start is called before the first frame update
     void Start()
@@ -22,9 +23,10 @@ public class YouWin : MonoBehaviour
         
         if(M[0].indice == 0 && M[1].indice == 1 && M[2].indice == 2 && M[3].indice == 3 && M[4].indice == 4 && M[5].indice == 5)
         {
+            rightt.Play();
             right = true;
-           
             
+
         }
         else
         {
@@ -35,6 +37,7 @@ public class YouWin : MonoBehaviour
         {
             win.SetActive(true);
             next.SetActive(true);
+            
             restart.SetActive(true);
         }
         else

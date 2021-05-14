@@ -8,7 +8,8 @@ public class Photos : MonoBehaviour
     public GameObject[] photo;
     public GameObject all;
     public GameObject fin;
-
+    public AudioSource winningSound;
+    
     public ObjectController[] objectController;
     int indice = 0;
     // Start is called before the first frame update
@@ -61,11 +62,14 @@ public class Photos : MonoBehaviour
         {
             
             photo[indice].SetActive(true);
+           
+
         }
         if (indice == photo.Length)
         {
             all.SetActive(false);
             fin.SetActive(true);
+            winningSound.Play();
         }
         else
         {

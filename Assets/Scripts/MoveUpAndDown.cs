@@ -6,7 +6,7 @@ public class MoveUpAndDown : MonoBehaviour
 {
     bool isUping = false;
     bool isDowning = false;
-
+    public AudioSource click;
 
     Vector2 position_initial;
     Vector2 firstTouch;
@@ -60,12 +60,14 @@ public class MoveUpAndDown : MonoBehaviour
     {
         if (isDowning)
         {
+            click.Play();
             objectController.change(indice, true);
             isUping = isDowning = false;
             UpdatePosition();
         }
         else if (isUping)
         {
+            click.Play();
             objectController.change(indice, false);
             isUping = isDowning = false;
             UpdatePosition();
