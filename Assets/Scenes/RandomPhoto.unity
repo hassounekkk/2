@@ -793,6 +793,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f56271d626adf6642b39c9a90ca59a60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  starPrefab: {fileID: 5290407826802859592, guid: 537b0842041300149a086c995633b363, type: 3}
+  starPrefab1: {fileID: 5934039009946492818, guid: 09a863163dbf0964cb8de74c5ec1817a, type: 3}
   photo:
   - {fileID: 595184439}
   - {fileID: 1192789052}
@@ -3369,6 +3371,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 261686671}
+        m_TargetAssemblyTypeName: Photos, Assembly-CSharp
+        m_MethodName: distroyIt
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 261686671}
         m_TargetAssemblyTypeName: Photos, Assembly-CSharp
         m_MethodName: Start

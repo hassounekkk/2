@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class Photos : MonoBehaviour
 {
-
+    public GameObject starPrefab;
+    public GameObject starPrefab1;
+    Vector2 starPosition = new Vector2(-9 , -4);
+    List<GameObject> prefab = new List<GameObject>();
+    List<GameObject> prefab2 = new List<GameObject>();
+    Vector2 starPosition1 = new Vector2(-9, -4);
     public GameObject[] photo;
     public GameObject all;
     public GameObject fin;
@@ -15,6 +20,7 @@ public class Photos : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {
+
         for(int i = 0; i < objectController.Length; i++)
         {
             objectController[i].rondomObjects();
@@ -30,6 +36,25 @@ public class Photos : MonoBehaviour
         }
 
         photo[indice].SetActive(true);
+        for (int i = 0; i < photo.Length; i++)
+        {
+           prefab.Add(Instantiate(starPrefab ,starPosition , Quaternion.identity));
+            starPosition.x += 0.7f;
+        }
+
+    }
+
+    public void distroyIt()
+    {
+        foreach(GameObject gameObject in prefab)
+        {
+            Destroy(gameObject);
+        }
+        foreach (GameObject gameObject in prefab2)
+        {
+            Destroy(gameObject);
+        }
+        starPosition = starPosition1 = new Vector2(-9, -4);
     }
 
     public void change()
@@ -76,6 +101,11 @@ public class Photos : MonoBehaviour
             all.SetActive(true);
             fin.SetActive(false);
         }
+
+        prefab2.Add(Instantiate(starPrefab1, starPosition1, Quaternion.identity));
+        starPosition1.x += 0.7f;
+
+
 
     }
 

@@ -26,7 +26,7 @@ public class YouWin : MonoBehaviour
             rightt.Play();
             right = true;
             
-
+            
         }
         else
         {
