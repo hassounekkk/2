@@ -25,6 +25,7 @@ public class Coloring : MonoBehaviour
     {
         SpriteRenderer sp = this.GetComponent<SpriteRenderer>();
         sp.color = curColer;
+        Debug.Log("you clicked me");
     }
     
 
