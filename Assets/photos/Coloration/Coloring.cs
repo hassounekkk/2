@@ -18,17 +18,14 @@ public class Coloring : MonoBehaviour
     {
         curColer = colorList[colorCount];
         var ray = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(ray, -Vector2.up);
-        if (Input.GetButton("Fire1"))
-        {
-            if (hit.collider != null)
-            {
-                SpriteRenderer sp = hit.collider.gameObject.GetComponent<SpriteRenderer>();
-                sp.color = curColer;
-            }
-        }
         
 
+    }
+
+    private void OnMouseDown()
+    {
+        SpriteRenderer sp = this.GetComponent<SpriteRenderer>();
+        sp.color = curColer;
     }
     public void paint(int colorcode)
     {
