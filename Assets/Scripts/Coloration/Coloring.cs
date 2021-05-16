@@ -4,21 +4,20 @@ using UnityEngine;
 
 public class Coloring : MonoBehaviour
 {
-    public Color[] colorList;
+    
     public Color curColer;
-    public int colorCount;
+    public ColorsController colorsController;
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+        colorsController = GameObject.FindObjectOfType<ColorsController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        curColer = colorList[colorCount];
-        var ray = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        
+        curColer = colorsController.curColer;
 
     }
 
@@ -27,9 +26,6 @@ public class Coloring : MonoBehaviour
         SpriteRenderer sp = this.GetComponent<SpriteRenderer>();
         sp.color = curColer;
     }
-    public void paint(int colorcode)
-    {
-        colorCount = colorcode;
-    }
+    
 
 }
