@@ -18,8 +18,12 @@ public class ColorsController : MonoBehaviour
     SpriteRenderer SpriteRenderers;
     public Color[] colors;
     public Transform positiooon;
-    public bool see = true;
 
+    public GameObject[] fin;
+    public GameObject[] fin2;
+    public GameObject winning;
+    public AudioSource winnig;
+    public AudioSource draw;
 
     /// <summary>
 
@@ -86,10 +90,23 @@ public class ColorsController : MonoBehaviour
     {
         photosWithoutCl[curIndice].SetActive(false);
         photoWithColers[curIndice].SetActive(false);
-        curIndice++;
-        photoWithColers[curIndice] = Instantiate(photoWithColers[curIndice], new Vector2(photosWithoutCl[curIndice].transform.position.x - 7.5f , photosWithoutCl[curIndice].transform.position.y), Quaternion.identity);  ;
-        photosWithoutCl[curIndice].SetActive(true);
-        updateList();
+        if (curIndice < photosWithoutCl.Count-1)
+        {
+            curIndice++;
+            photoWithColers[curIndice] = Instantiate(photoWithColers[curIndice], new Vector2(photosWithoutCl[curIndice].transform.position.x - 7.5f, photosWithoutCl[curIndice].transform.position.y), Quaternion.identity); ;
+            photosWithoutCl[curIndice].SetActive(true);
+            updateList();
+        }
+        else
+        {
+            for (int i = 0; i < fin.Length; i++)
+            {
+                fin2[i].SetActive(false);
+                winning.SetActive(true);
+
+            }
+            winnig.Play();
+        }
     }
      public void ChooseColer(int nbr)
     {
@@ -107,11 +124,22 @@ public class ColorsController : MonoBehaviour
 
         updateList();
 
-        tryColor1= CurentColer[0].color;
+        
 
         if (check())
         {
-            Debug.Log("jjjjjjjjjjjjjjjjjjjjjjjjjjjjjj");
+            draw.Play();
+            for(int i=0; i < fin.Length; i++)
+            {
+                fin[i].SetActive(true);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < fin.Length; i++)
+            {
+                fin[i].SetActive(false);
+            }
         }
         
     }
