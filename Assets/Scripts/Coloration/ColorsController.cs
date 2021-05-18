@@ -4,25 +4,115 @@ using UnityEngine;
 
 public class ColorsController : MonoBehaviour
 {
+    public List<GameObject> photosWithoutCl = new List<GameObject>();
+    public List<GameObject> photoWithColers = new List<GameObject>();
+
+    List<SpriteRenderer> CurentColer = new List<SpriteRenderer>();
+    List<SpriteRenderer> correstedColer = new List<SpriteRenderer>();
+
+
+
+    int curIndice = 0;
     public Color curColer;
     public GameObject chosenColor;
     SpriteRenderer SpriteRenderers;
     public Color[] colors;
+    public Transform positiooon;
+    public bool see = true;
+
+
+    /// <summary>
+
+    public Color tryColor1;
+    
+    //
+
+    /// </summary>
     // Start is called before the first frame update
     void Start()
     {
+        foreach(GameObject gameObject in photosWithoutCl)
+        {
+            gameObject.SetActive(false);
+        }
+        photosWithoutCl[0].SetActive(true);
+
+        photoWithColers[0] = Instantiate(photoWithColers[0], new Vector2(photosWithoutCl[curIndice].transform.position.x - 7.5f, photosWithoutCl[curIndice].transform.position.y), Quaternion.identity);
         SpriteRenderers = chosenColor.GetComponent<SpriteRenderer>();
         SpriteRenderers.color = curColer;
+
+        
+
+        for(int i=0; i<photoWithColers[0].transform.childCount; i++)
+        {
+            correstedColer.Add(photoWithColers[0].transform.GetChild(i).gameObject.GetComponent<SpriteRenderer>());
+        }
+        for (int i = 0; i < photosWithoutCl[0].transform.childCount; i++)
+        {
+            CurentColer.Add(photosWithoutCl[0].transform.GetChild(i).gameObject.GetComponent<SpriteRenderer>());
+        }
+    }
+    void updateList()
+    {
+        List<SpriteRenderer> Corr = new List<SpriteRenderer>();
+        for (int i = 0; i < photoWithColers[curIndice].transform.childCount; i++)
+        {
+            Corr.Add(photoWithColers[curIndice].transform.GetChild(i).gameObject.GetComponent<SpriteRenderer>());
+        }
+        correstedColer = Corr;
+
+        List<SpriteRenderer> Cur = new List<SpriteRenderer>();
+        for (int i = 0; i < photosWithoutCl[curIndice].transform.childCount; i++)
+        {
+            Cur.Add(photosWithoutCl[curIndice].transform.GetChild(i).gameObject.GetComponent<SpriteRenderer>());
+        }
+        CurentColer = Cur;
     }
 
+    bool  check()
+    {
+        bool resultat = true;
+        for (int i = 0; i < CurentColer.Count; i++)
+        {
+            if (CurentColer[i].color != correstedColer[i].color)
+            {
+                resultat = false;
+            }
+        }
+        return resultat;
+    }
+
+    public void nextPhoto()
+    {
+        photosWithoutCl[curIndice].SetActive(false);
+        photoWithColers[curIndice].SetActive(false);
+        curIndice++;
+        photoWithColers[curIndice] = Instantiate(photoWithColers[curIndice], new Vector2(photosWithoutCl[curIndice].transform.position.x - 7.5f , photosWithoutCl[curIndice].transform.position.y), Quaternion.identity);  ;
+        photosWithoutCl[curIndice].SetActive(true);
+        updateList();
+    }
      public void ChooseColer(int nbr)
     {
+
         curColer = colors[nbr];
     }
+
+
 
     // Update is called once per frame
     void Update()
     {
+
         SpriteRenderers.color = curColer;
+
+        updateList();
+
+        tryColor1= CurentColer[0].color;
+
+        if (check())
+        {
+            Debug.Log("jjjjjjjjjjjjjjjjjjjjjjjjjjjjjj");
+        }
+        
     }
 }
