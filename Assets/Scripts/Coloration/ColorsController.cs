@@ -1,24 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class ColorsController : MonoBehaviour
+public class ColorsController : GGame
 {
+
     public List<GameObject> photosWithoutCl = new List<GameObject>();
     public List<GameObject> photoWithColers = new List<GameObject>();
 
     List<SpriteRenderer> CurentColer = new List<SpriteRenderer>();
     List<SpriteRenderer> correstedColer = new List<SpriteRenderer>();
 
+    float Timer = 1f;
 
-
+    Score score;
     int curIndice = 0;
     public Color curColer;
     public GameObject chosenColor;
     SpriteRenderer SpriteRenderers;
     public Color[] colors;
     public Transform positiooon;
-    public bool see = true;
+
+    public GameObject[] fin;
+    public GameObject fin2;
+    public GameObject winning;
+    public GameObject pauseScean;
+    public AudioSource[] colorsVoice;
+
 
 
     /// <summary>
@@ -31,6 +40,9 @@ public class ColorsController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        score = FindObjectOfType<Score>();
+        score.initialiserStars(photosWithoutCl.Count);
+
         foreach(GameObject gameObject in photosWithoutCl)
         {
             gameObject.SetActive(false);
@@ -82,37 +94,79 @@ public class ColorsController : MonoBehaviour
         return resultat;
     }
 
+
     public void nextPhoto()
     {
         photosWithoutCl[curIndice].SetActive(false);
         photoWithColers[curIndice].SetActive(false);
-        curIndice++;
-        photoWithColers[curIndice] = Instantiate(photoWithColers[curIndice], new Vector2(photosWithoutCl[curIndice].transform.position.x - 7.5f , photosWithoutCl[curIndice].transform.position.y), Quaternion.identity);  ;
-        photosWithoutCl[curIndice].SetActive(true);
-        updateList();
+        score.AddStar();
+        if (curIndice < photosWithoutCl.Count-1)
+        {
+            curIndice++;
+            photoWithColers[curIndice] = Instantiate(photoWithColers[curIndice], new Vector2(photosWithoutCl[curIndice].transform.position.x - 7.5f, photosWithoutCl[curIndice].transform.position.y), Quaternion.identity); ;
+            photosWithoutCl[curIndice].SetActive(true);
+            updateList();
+            
+        }
+        else if(!finish)
+        {
+           
+                fin2.SetActive(false);
+
+            finish_game();
+            finish = true;
+            add_Score_Db = FindObjectOfType<Add_Score_db>();
+            if (PlayerPrefs.GetInt("id_user") != 0)
+                add_Score_Db.UpdateData(PlayerPrefs.GetInt("id_user"), 16, 0, timer_to_finish);
+            
+            
+        }
     }
      public void ChooseColer(int nbr)
     {
-
         curColer = colors[nbr];
+        colorsVoice[nbr].Play();
     }
 
-
+    public void changeScene(int n)
+    {
+        SceneManager.LoadScene(n, LoadSceneMode.Single);
+    }
 
     // Update is called once per frame
     void Update()
     {
-
+        if(!finish && !pause) timer_to_finish += Time.deltaTime;
         SpriteRenderers.color = curColer;
 
         updateList();
 
-        tryColor1= CurentColer[0].color;
+        
 
         if (check())
         {
-            Debug.Log("jjjjjjjjjjjjjjjjjjjjjjjjjjjjjj");
+            
+            for(int i=0; i < fin.Length; i++)
+            {
+                fin[i].SetActive(true);
+            }
+            Timer -= Time.deltaTime;
+        }
+        else
+        {
+            for (int i = 0; i < fin.Length; i++)
+            {
+                fin[i].SetActive(false);
+            }
+        }
+
+        if (Timer <= 0 && !finish)
+        {
+            nextPhoto();
+            Timer = 1;
         }
         
     }
+
+
 }
