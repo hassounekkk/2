@@ -21,14 +21,29 @@ public class ColorsController : GGame
     SpriteRenderer SpriteRenderers;
     public Color[] colors;
     public Transform positiooon;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> cef7472e5250545940b1b97e00a1b679f2173c4e
 
     public GameObject[] fin;
     public GameObject fin2;
     public GameObject winning;
     public GameObject pauseScean;
     public AudioSource[] colorsVoice;
+<<<<<<< HEAD
 
+=======
+>>>>>>> cef7472e5250545940b1b97e00a1b679f2173c4e
 
+=======
+>>>>>>> 98836b612aa80a02c223aac82f5f7bc2ecd264b5
+
+    public GameObject[] fin;
+    public GameObject[] fin2;
+    public GameObject winning;
+    public AudioSource winnig;
+    public AudioSource draw;
 
     /// <summary>
 
@@ -99,13 +114,24 @@ public class ColorsController : GGame
     {
         photosWithoutCl[curIndice].SetActive(false);
         photoWithColers[curIndice].SetActive(false);
+<<<<<<< HEAD
         score.AddStar();
+=======
+<<<<<<< HEAD
+        score.AddStar();
+=======
+>>>>>>> 98836b612aa80a02c223aac82f5f7bc2ecd264b5
+>>>>>>> cef7472e5250545940b1b97e00a1b679f2173c4e
         if (curIndice < photosWithoutCl.Count-1)
         {
             curIndice++;
             photoWithColers[curIndice] = Instantiate(photoWithColers[curIndice], new Vector2(photosWithoutCl[curIndice].transform.position.x - 7.5f, photosWithoutCl[curIndice].transform.position.y), Quaternion.identity); ;
             photosWithoutCl[curIndice].SetActive(true);
             updateList();
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> cef7472e5250545940b1b97e00a1b679f2173c4e
             
         }
         else if(!finish)
@@ -120,6 +146,21 @@ public class ColorsController : GGame
                 add_Score_Db.UpdateData(PlayerPrefs.GetInt("id_user"), 16, 0, timer_to_finish);
             
             
+<<<<<<< HEAD
+=======
+=======
+        }
+        else
+        {
+            for (int i = 0; i < fin.Length; i++)
+            {
+                fin2[i].SetActive(false);
+                winning.SetActive(true);
+
+            }
+            winnig.Play();
+>>>>>>> 98836b612aa80a02c223aac82f5f7bc2ecd264b5
+>>>>>>> cef7472e5250545940b1b97e00a1b679f2173c4e
         }
     }
      public void ChooseColer(int nbr)
@@ -145,12 +186,27 @@ public class ColorsController : GGame
 
         if (check())
         {
+<<<<<<< HEAD
             
+=======
+<<<<<<< HEAD
+            
+=======
+            draw.Play();
+>>>>>>> 98836b612aa80a02c223aac82f5f7bc2ecd264b5
+>>>>>>> cef7472e5250545940b1b97e00a1b679f2173c4e
             for(int i=0; i < fin.Length; i++)
             {
                 fin[i].SetActive(true);
             }
+<<<<<<< HEAD
             Timer -= Time.deltaTime;
+=======
+<<<<<<< HEAD
+            Timer -= Time.deltaTime;
+=======
+>>>>>>> 98836b612aa80a02c223aac82f5f7bc2ecd264b5
+>>>>>>> cef7472e5250545940b1b97e00a1b679f2173c4e
         }
         else
         {
@@ -158,12 +214,21 @@ public class ColorsController : GGame
             {
                 fin[i].SetActive(false);
             }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> cef7472e5250545940b1b97e00a1b679f2173c4e
         }
 
         if (Timer <= 0 && !finish)
         {
             nextPhoto();
             Timer = 1;
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 98836b612aa80a02c223aac82f5f7bc2ecd264b5
+>>>>>>> cef7472e5250545940b1b97e00a1b679f2173c4e
         }
         
     }

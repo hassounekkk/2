@@ -7,7 +7,7 @@ public class Coloring : MonoBehaviour
     
     public Color curColer;
     public ColorsController colorsController;
-    
+    public AudioSource draw;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +23,7 @@ public class Coloring : MonoBehaviour
 
     private void OnMouseDown()
     {
+        draw.Play();
         SpriteRenderer sp = this.GetComponent<SpriteRenderer>();
         sp.color = curColer;
     }

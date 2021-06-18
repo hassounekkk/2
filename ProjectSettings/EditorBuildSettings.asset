@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Coloration.unity
+    guid: 5383501b6ff31c746af066914ef5b000
+  - enabled: 1
     path: Assets/Scenes/Intro.unity
     guid: 8e406506a7db7104ebc0f749fbb3214e
   - enabled: 1
@@ -49,5 +52,13 @@ EditorBuildSettings:
     guid: 6aa9582e76d3a8042806186171cece3b
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 61ff5d96085c5a64585a0b2df5b0e826, type: 2}
+<<<<<<< HEAD
     com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: a9a7bd9931ee8424ba824ed77471f7f9, type: 2}
+=======
+<<<<<<< HEAD
+    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: a9a7bd9931ee8424ba824ed77471f7f9, type: 2}
+=======
+    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: 12ad0424de7983941b4ca2e28feead67, type: 2}
+>>>>>>> 98836b612aa80a02c223aac82f5f7bc2ecd264b5
+>>>>>>> cef7472e5250545940b1b97e00a1b679f2173c4e
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: f7fcea8b3d4debd4bae892b8fb80ac3b, type: 2}
