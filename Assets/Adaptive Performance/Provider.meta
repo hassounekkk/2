@@ -1,5 +1,25 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+<<<<<<< HEAD:Assets/Adaptive Performance/Provider.meta
 guid: 14db4c8e5530960438985a20f695daf2
+=======
+guid: 2bb3998eaa346ad44b00020dbb6e351e
+>>>>>>> 5c73e8350f3eb868ac30216fb778ab9d9c7f316e:Assets/Pre_horof.meta
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD:Assets/Adaptive Performance/Provider.meta
+guid: 14db4c8e5530960438985a20f695daf2
+=======
+guid: ef1c9f65e43153e4aad806e6bb6d3de8
+>>>>>>> cef7472e5250545940b1b97e00a1b679f2173c4e:Assets/Animation/Emojies.meta
+=======
+<<<<<<< HEAD
+guid: 14db4c8e5530960438985a20f695daf2
+=======
+guid: 7e10d0d7094dcc94a99649c76aa356a0
+>>>>>>> 98836b612aa80a02c223aac82f5f7bc2ecd264b5
+>>>>>>> cef7472e5250545940b1b97e00a1b679f2173c4e
+>>>>>>> 5c73e8350f3eb868ac30216fb778ab9d9c7f316e
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
